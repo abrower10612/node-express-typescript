@@ -11,14 +11,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createUser = void 0;
 const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { username, password } = req.body;
+    const { username, age, email } = req.body;
     if (!username)
         return res.send('Missing username');
-    if (!password)
-        return res.send('Missing password');
+    if (!age)
+        return res.send('Missing age');
+    if (!email)
+        return res.send('Missing email');
     const newUser = {
-        username: username,
-        password: password
+        username,
+        age,
+        email
     };
     res.send(`Account successfully created for ${newUser.username}.`);
 });

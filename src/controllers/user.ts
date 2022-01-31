@@ -2,15 +2,17 @@ import { Request, Response } from 'express';
 import { User } from '../models/user';
 
 export const createUser = async (req: Request, res: Response) => {
-    const { username, password } = req.body;
+    const { username, age, email } = req.body;
 
     if (!username) return res.send('Missing username');
-    if (!password) return res.send('Missing password');
+    if (!age) return res.send('Missing age');
+    if (!email) return res.send('Missing email');
 
     const newUser: User = {
-        username: username,
-        password: password
+        username,
+        age,
+        email
     }
 
-    res.send(`Account successfully created for ${newUser.username}.`);
+    return res.json({ success: true, newUser });
 }
