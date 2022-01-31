@@ -6,10 +6,10 @@ dotenv.config();
 
 const app: Application = express();
 
-app.use('/user', user);
-
 app.use(cors());
 app.use(express.json());
+
+app.use('/user', user);
 
 const port: string | number = process.env.PORT || 5000;
 
